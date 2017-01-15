@@ -1,9 +1,8 @@
 ## todo
 
 - camera on pidgeon
-- start screen and end screen
 - long horizontal world
-- gravity exists
+- start screen and end screen
 - you can get hurt by flying into things
   - what is hurt: blink screen
 
