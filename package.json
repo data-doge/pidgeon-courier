@@ -33,6 +33,7 @@
   },
   "homepage": "https://github.com/data-doge/phaserphaser",
   "dependencies": {
+    "lodash.random": "^3.2.0",
     "lodash.range": "^3.2.0",
     "phaser": "^2.6.2"
   },
