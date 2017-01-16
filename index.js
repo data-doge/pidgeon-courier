@@ -2,6 +2,8 @@ const { Game, AUTO, Physics, Camera, Keyboard } = window.Phaser
 const { ARCADE } = Physics
 const range = require('lodash.range')
 const random = require('lodash.random')
+const $ = require('jquery')
+const sample = require('lodash.sample')
 
 const speed = 400
 const height = 407
@@ -80,6 +82,17 @@ function update () {
     this.explosion.y = y
     this.explosion.play('exploding')
     this.explosion.animations.currentAnim.killOnComplete = true
+    const startTime = random(10, 300)
+    $('body').append(`<iframe id="mc-sniper-1" width="560" height="315" src="https://www.youtube.com/embed/mr8CbJber6A?autoplay=1&start=${startTime}" frameborder="0" allowfullscreen></iframe>`)
+    $('body').append(`<iframe id="mc-sniper-2" width="560" height="315" src="https://www.youtube.com/embed/mr8CbJber6A?autoplay=1&start=${startTime}" frameborder="0" allowfullscreen></iframe>`)
+    $('body').append(`<iframe id="mc-sniper-3" width="280" height="158" src="https://www.youtube.com/embed/mr8CbJber6A?autoplay=1&start=${startTime}" frameborder="0" allowfullscreen></iframe>`)
+    let deg = 0
+    setInterval(() => {
+      $('body').css({ background: sample(['black', 'white', 'cyan', 'gold']) })
+      $('#alert').toggle()
+      deg += 0.25
+      $('iframe').css({ transform: `rotateY(${deg % 360}deg)` })
+    }, 10)
     this.coo.play()
     pidgeon.kill()
     ufo.kill()
