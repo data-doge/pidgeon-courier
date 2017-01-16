@@ -2,3 +2,31 @@ html, body {
   position: relative;
   height: 100%;
 }
+
+
+#alert {
+  position: fixed;
+  font-family: sans-serif;
+  font-size: 200px;
+  color: red;
+  display: none;
+  z-index: 100;
+}
+
+#mc-sniper-1 {
+  position: fixed;
+  top: 40px;
+  left: 50px;
+}
+
+#mc-sniper-2 {
+  position: fixed;
+  top: 300px;
+  left: 400px;
+}
+
+#mc-sniper-3 {
+  position: fixed;
+  top: 400px;
+  left: 80px;
+}
