@@ -1,3 +1,5 @@
+const { Spam } = require('./objects')
+
 const menu = function () {}
 
 menu.prototype = {
