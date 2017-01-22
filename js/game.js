@@ -1,4 +1,9 @@
-const game = function(){}
+const range = require('lodash.range')
+const random = require('lodash.random')
+const $ = require('jquery')
+const sample = require('lodash.sample')
+
+const game = function () {}
 
 game.prototype = {
 
@@ -9,7 +14,6 @@ game.prototype = {
     const { Physics, Camera, Keyboard } = window.Phaser
     const { ARCADE } = Physics
 
-    const speed = 400
     const height = 407
     const worldWidth = 4000
 
@@ -44,7 +48,6 @@ game.prototype = {
 
     this.cursors = this.input.keyboard.createCursorKeys()
     this.spacebar = this.input.keyboard.addKey(Keyboard.SPACEBAR)
-
   },
 
   update: function () {
@@ -80,7 +83,7 @@ game.prototype = {
         $('body').css({ background: sample(['black', 'white', 'cyan', 'gold']) })
         $('#alert').toggle()
         deg += 0.25
-        $('iframe').css({ transform: 'rotateY(${deg % 360}deg)' })
+        $('iframe').css({ transform: `rotateY(${deg % 360}deg)` })
       }, this)
       this.coo.play()
       pidgeon.kill()
@@ -89,12 +92,14 @@ game.prototype = {
       this.murderer = true
     })
 
-    if(this.murderer) {
-      $('body').bind('click', function(event){
-        $(this).unbind(event);
-        PigeonCourier.time.events.remove(this.murdererTimer)
-        PigeonCourier.state.start('end')
+    if (this.murderer) {
+      $('body').bind('click', e => {
+        $(e.target).unbind(e)
+        this.time.events.remove(this.murdererTimer)
+        this.state.start('end')
       })
     }
   }
 }
+
+module.exports = game
