@@ -11,7 +11,7 @@ menu.prototype = {
     this.load.spritesheet('pidgeon', './assets/master-pidgeon-spritesheet.png', 64, 64)
     this.load.spritesheet('ufo', './assets/ufo.png', 58, 210)
     this.load.spritesheet('explosion', './assets/explosion.png', 64, 64)
-    this.loadSpam()
+    this.loadSpams()
   },
 
   create: function () {
@@ -27,17 +27,19 @@ menu.prototype = {
     }
   },
 
-  loadSpam: function(){
-    range(0,9).forEach((value) => {
-      this.load.image(`spam_${value}`, `./assets/spam_${value}.jpg`)
+  loadSpams: function(){
+    this.spams = range(0,9).map((value) => {
+      return new Spam({ game: this,
+                        name: `spam_${value}`, 
+                        path: `./assets/spam_${value}.jpg`, 
+                        width: 35, 
+                        height: 50})
     })
   },
 
   addSpam: function(){
-    range(0,9).forEach((value) => {
-      let sprite = this.add.sprite(value*200, 30, `spam_${value}`)
-      sprite.width = 35
-      sprite.height = 50
+    this.spams.forEach((spam, index) => {
+      spam.summon({ x: index * 250, y: 30 })
     })
   }
 }
